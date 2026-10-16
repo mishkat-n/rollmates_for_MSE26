@@ -142,7 +142,7 @@ const SENIORS = [
   ["2513043", "Maisun Mehajabin", "https://www.facebook.com/profile.php?id=61572126153339", "", "", "Maisun"],
   ["2513044", "Siyam Ahmed", "https://www.facebook.com/siam.ahmed.61146", "", "8801931686425", "Siyam"],
   ["2513045", "Md. Mubtasim Sarowar Rihan", "https://www.facebook.com/sarowar.rihan", "", "8801786204165", "Rihan"],
-  ["2513046", "Rigwan Mustafa", "https://www.facebook.com/rigwan.mustafa", "", "8801522127434", "Rigwan"],
+  ["2513046", "Rigwan Mustafa", "https://www.facebook.com/rigwan.mustafa", "https://www.linkedin.com/in/rigwan-mustafa-475593444", "8801522127434", "Rigwan"],
   ["2513047", "Afnan Amjad", "https://www.facebook.com/profile.php?id=100091292379112", "", "8801741116448", "Afnan"],
   ["2513048", "Md.Ashiqur Rahman Mozumder", "https://www.facebook.com/ashiqur.rahman.mozumder.2024", "", "8801861979520", "Ashique"],
   ["2513049", "Zuana Tashrin", "https://www.facebook.com/profile.php?id=61587131139804", "", "", "Zuana"],
@@ -179,7 +179,7 @@ const card = (p, label) => {
     (fbU ? `<a class="ic fb" href="${esc(fbU)}" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">${ICON.fb}</a>` : "") +
     (liU ? `<a class="ic li" href="${esc(liU)}" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">${ICON.li}</a>` : "") +
     (ph  ? `<a class="ic ph" href="https://wa.me/${esc(ph)}" target="_blank" rel="noopener" aria-label="WhatsApp +${esc(ph)}" title="WhatsApp">${ICON.ph}<span>+${esc(ph)}</span></a>` : "");
-  return `<div class="card mate"><small>${label}</small><b>${name ? esc(name) : "Rollmate not found yet!"}</b>` +
+  return `<div class="card mate"><small>${label}</small><b>${name ? esc(name) : "not found!"}</b>` +
     (nick ? `<small>(${esc(nick)})</small>` : "") + `` +
     `<small>${esc(roll)}</small>` + (icons ? `<div class="links">${icons}</div>` : "") + `</div>`;
 };
@@ -194,7 +194,7 @@ function findRoll(){
   if(!q){ out.innerHTML = '<p class="msg">Type your roll number first.</p>'; return; }
   const target = q.startsWith(JUNIOR_PREFIX) ? SENIOR_PREFIX + q.slice(JUNIOR_PREFIX.length) : q;
   const p = SENIORS.find(s => s[0] === target);
-  out.innerHTML = p ? card(p, "Your rollmate")
+  out.innerHTML = p ? card(p, "Your rollmate is")
                     : '<p class="msg">No match for ' + esc(q) + '. Check the number and try again.</p>';
 }
 
